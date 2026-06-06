@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Espace Admin</h1>
+<p class="text-muted">Gestion des utilisateurs du systeme de scolarite.</p>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th>Nom d'utilisateur</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for profil in users %}
+      <tr>
+        <td>{{ profil.user.username }}</td>
+        <td>{{ profil.user.first_name }} {{ profil.user.last_name }}</td>
+        <td>{{ profil.user.email }}</td>
+        <td>{{ profil.get_role_display }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="4" class="text-center">Aucun utilisateur trouve.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

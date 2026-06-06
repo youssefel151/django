@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Inscription utilisateur</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Votre formulaire contient des erreurs :
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">S'inscrire</button>
+</form>
+{% endblock %}
